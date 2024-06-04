@@ -1,9 +1,8 @@
 "use client"
-import React from 'react'
+import React, { Suspense } from 'react'
 import BlogCard from './BlogCard'
 import { useSearchParams } from 'next/navigation'
-import { articles } from './articles'
-import { Metadata, getBlogPosts } from '@/app/blog/utils'
+import { Metadata } from '@/app/blog/utils'
 
 export type BlogArticles = {
     metadata: Metadata;
@@ -20,12 +19,14 @@ const BlogList = ({articles}: {articles: BlogArticles[]}) => {
   return (
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <div className="grid lg:grid-cols-2 gap-6">
+    
       {
        search ? filteredArticles.map(i => (
+        <Suspense>
           < BlogCard key={i.slug} metadata={i.metadata} slug={i.slug}/>
+          </Suspense>
         )) : articles.map(i => (
             < BlogCard key={i.slug} metadata={i.metadata} slug={i.slug}/>
-
         ))
       }
   </div>

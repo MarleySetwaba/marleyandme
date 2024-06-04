@@ -107,7 +107,7 @@ export const ArticleLayout = ({article}: {article: BlogArticle}) => {
 {
   article.sections.map(i => (
     <div className="space-y-3">
-    <h3 className="text-2xl font-semibold dark:text-white">{i.section_title}</h3>
+    <h3 className="text-2xl font-semibold">{i.section_title}</h3>
 
 {
   i.paragraphs.map(i => (

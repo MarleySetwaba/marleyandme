@@ -1,20 +1,13 @@
 
-import BlogCard from '@/components/blog/BlogCard'
-import { useSearchParams } from 'next/navigation'
-import { articles } from '@/components/blog/articles'
 import React from 'react'
-// import BlogList from '@/components/blog/BlogList'
 import { getBlogPosts } from './utils'
 import BlogList from '@/components/blog/BlogList'
+import { Suspense } from 'react'
 
-const page = async () => {
+
+const page = () => {
 
 const allBlogs = getBlogPosts()
-// const search = useSearchParams().get('category')
-
-
-
-
 
   return (
     <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
@@ -32,7 +25,9 @@ Blog.
        </p>
 
     </div>
-<BlogList articles={allBlogs}/>
+
+{/* <BlogList articles={allBlogs}/> */}
+
 
     </div>
   )

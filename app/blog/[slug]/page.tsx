@@ -19,33 +19,15 @@ export function generateMetadata({ params }) {
 
   let {
     title,
-    publishedAt: publishedTime,
-    summary: description,
+    publishedAt,
+    summary,
     image,
+    category,
   } = post.metadata
-  let ogImage = image ? image : `${baseUrl}/og?title=${encodeURIComponent(title)}`
 
   return {
     title,
-    description,
-    openGraph: {
-      title,
-      description,
-      type: 'article',
-      publishedTime,
-      url: `${baseUrl}/blog/${post.slug}`,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
+    summary,
   }
 }
 
@@ -69,9 +51,7 @@ export default function Blog({ params }) {
             datePublished: post.metadata.publishedAt,
             dateModified: post.metadata.publishedAt,
             description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `/og?title=${encodeURIComponent(post.metadata.title)}`,
+            image: post.metadata.image,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               '@type': 'Person',
