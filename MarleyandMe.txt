@@ -5,14 +5,16 @@ TODO
 2. Add Link To 'Lets Connect' --- Done
 3. Plan for Custom Sidebar Component
 4. Add Social Links At Footer & Get LinkedIn Icon ---- Done
+5. Style Mobile Nav Menu and Add Links --- Done
 
 ==========Services=============
-1. Add Link To 'Work With Me'
-2. Add Correct Resume
+1. Add Link To 'Work With Me' --- Done
+2. Add Correct Resume -- Done
 
 
 ======Blog========================
 1. Add Back Button to Blog
+2. Add Links To Mobile Menu -- Done
 
 
 

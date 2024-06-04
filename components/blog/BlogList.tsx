@@ -16,14 +16,17 @@ export type BlogArticle = {
 const BlogList = ({articles}: {articles: BlogArticle[]}) => {
   const [isOpen, setIsOpen] = useState(false)
 const [posts, setPosts] = useState(articles) 
+const [categoryLink, setCategoryLink] = useState<string>('all')
 
 const handleClick = (category: string) => {
   if(category === 'all'){
     setPosts(articles)
+    setCategoryLink('all')
   }
   else {
   const filteredPosts = articles.filter(i => i.metadata.category === category)
   setPosts(filteredPosts)
+  setCategoryLink(category)
 }
 }
 
@@ -37,7 +40,7 @@ const handleClick = (category: string) => {
       <Link className='text-xl font-semibold  text-blue-600 hover:text-eerie_black-500' href='#'>&lt;&#47;&amp;Blog.&gt;</Link>
       </div>
       <div className="md:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="size-8 flex justify-center items-center text-sm font-semibold rounded-full border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700">
+            <button onClick={() => setIsOpen(!isOpen)} className="size-8 flex justify-center items-center text-sm font-semibold rounded-full border border-blue-600 text-davys_gray disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700">
             <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
           <svg className="hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
             </button>
@@ -50,7 +53,7 @@ const handleClick = (category: string) => {
        {
         blogLinks.map(i => (
 
-          <button className="py-3 ps-px px-3 font-medium text-davys_gray hover:text-eerie_black-500" onClick={() => handleClick(i.category)} >{i.title}</button>
+          <button className={`py-3 ps-px px-3 font-medium hover:text-eerie_black-500 ${ categoryLink === i.category ? 'text-blue-600' : 'text-davys_gray'}`} onClick={() => handleClick(i.category)} >{i.title}</button>
         ))
        }
        
@@ -64,7 +67,7 @@ const handleClick = (category: string) => {
           {
             blogLinks.map(i => (
 
-              <Link className="py-3 ps-px sm:px-3 font-medium text-center text-davys_gray" href={i.href}>{i.title}</Link>
+              <button className={`py-3 ps-px sm:px-3 font-medium text-center ${ categoryLink === i.category ? 'text-blue-600' : 'text-davys_gray'}`} onClick={() => handleClick(i.category)}>{i.title}</button>
             ))
           }
     

@@ -24,7 +24,7 @@ const Nav = () => {
           <div className="md:hidden">
       <Menu>
         <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-800 py-1.5 px-3 text-sm/6 font-semibold text-black shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-700 data-[open]:bg-gray-700 data-[focus]:outline-1 data-[focus]:outline-white">
-          Icon
+        <svg className='flex-shrink-0 size-3.5' viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 6H20M4 12H14M4 18H9" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         </MenuButton>
         <Transition
           enter="transition ease-out duration-75"
@@ -36,15 +36,15 @@ const Nav = () => {
         >
           <MenuItems
             anchor="bottom end"
-            className="w-52 origin-top-right rounded-xl border border-seasalt bg-seasalt p-1 text-sm/6 text-black [--anchor-gap:var(--spacing-1)] focus:outline-none"
+            className="w-52 origin-top-right rounded-xl border border-seasalt bg-lime-300 p-1 text-sm/6 text-davys_gray [--anchor-gap:var(--spacing-1)] focus:outline-none"
           >
             {
                 navLinks.map(i => (
             <MenuItem key={i.title}>
-              <button className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
+              <Link href={i.url} className="group flex w-full items-center gap-2 rounded-lg py-1.5 px-3 data-[focus]:bg-white/10">
              {i.title}
                 <kbd className="ml-auto hidden font-sans text-xs text-white/50 group-data-[focus]:inline">⌘E</kbd>
-              </button>
+              </Link>
             </MenuItem>
                 ))
             }
