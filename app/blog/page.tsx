@@ -9,8 +9,7 @@ import { baseUrl } from '../sitemap'
 const page = async () => {
 
 
-const data = await fetch(baseUrl + '/api/blog')
-const allBlogs = await data.json()
+const allBlogs = getBlogPosts()
 
 
 
