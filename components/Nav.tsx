@@ -17,9 +17,9 @@ const Nav = () => {
         </div>
     
         <div className="flex items-center gap-x-2 ms-auto py-1 md:ps-6 md:order-3 md:col-span-3">
-          <button type="button" className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl text-black hover:bg-lime-300 transition hover:text-seasalt focus:outline-none focus:bg-blue-600">
+          <Link href={'/contact'} className="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-xl text-black hover:bg-lime-300 transition hover:text-seasalt ">
             Lets Connect
-          </button>
+          </Link>
     
           <div className="md:hidden">
       <Menu>

@@ -1,6 +1,20 @@
 TODO
 
-1. Remove All Dark Styles
-2. 
+==========Home===================
+1. Add Favicon ---- DONE
+2. Add Link To 'Lets Connect' --- Done
+3. Plan for Custom Sidebar Component
+4. Add Social Links At Footer & Get LinkedIn Icon ---- Done
 
-className="flex-shrink-0 text-blue-600" width="24" height="24"
+==========Services=============
+1. Add Link To 'Work With Me'
+2. Add Correct Resume
+
+
+======Blog========================
+1. Add Back Button to Blog
+
+
+
+=================Functional===================
+1. Add Email Component
