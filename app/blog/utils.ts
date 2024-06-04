@@ -58,6 +58,10 @@ export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), 'app', 'blog', 'posts'))
 }
 
+export function getBlogsByCategory(category: string) {
+  return getBlogPosts().filter(i => i.metadata.category === category)
+}
+
 export function formatDate(date: string, includeRelative = false) {
   let currentDate = new Date()
   if (!date.includes('T')) {

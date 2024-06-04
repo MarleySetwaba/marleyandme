@@ -85,6 +85,29 @@ export const offerings: OfferingsType[] = [
     }
   ]
 
+  export const blogLinks = [
+    {
+      title: 'All',
+      category: 'all',
+      href: '/blog'
+    },
+    {
+      title: 'Business Analysis',
+      category: 'business_analysis',
+      href: '/blog?category=business_analysis'
+    },
+    {
+      title: 'Dev',
+      category: 'dev',
+      href: '/blog?category=dev'
+    },
+    {
+      title: 'Case Studies',
+      category: 'case_studies',
+      href: '/blog?category=case_studies'
+    },
+  ]
+
   export type BlogArticle = {
     id: string;
     title: string;

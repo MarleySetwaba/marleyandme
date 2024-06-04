@@ -1,15 +1,24 @@
-
-import React from 'react'
+import React, { useState } from 'react'
 import { getBlogPosts } from './utils'
 import BlogList from '@/components/blog/BlogList'
-import { Suspense } from 'react'
+import { baseUrl } from '../sitemap'
 
 
-const page = () => {
 
-const allBlogs = getBlogPosts()
+
+const page = async () => {
+
+
+const data = await fetch(baseUrl + '/api/blog')
+const allBlogs = await data.json()
+
+
 
   return (
+    <>
+
+
+{/* Posts */}
     <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-10">
     <div className="mt-3 max-w-2xl text-center mx-auto">
       <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-neutral-200">
@@ -26,10 +35,11 @@ Blog.
 
     </div>
 
-{/* <BlogList articles={allBlogs}/> */}
+<BlogList articles={allBlogs}/>
 
 
     </div>
+    </>
   )
 }
 

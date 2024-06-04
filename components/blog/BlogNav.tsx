@@ -1,8 +1,7 @@
 "use client"
 import { Transition } from '@headlessui/react'
 import Link from 'next/link'
-import { useSearchParams } from 'next/navigation'
-import React, { Suspense, useState } from 'react'
+import React, { useState } from 'react'
 
 const blogLinks = [
   {
@@ -29,12 +28,11 @@ const blogLinks = [
 
 
 const BlogNav = () => {
-  const search = useSearchParams().get('category')
 const [isOpen, setIsOpen] = useState(false)
 
 
   return (
-    <Suspense>
+
 <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 lg:w-1/2 w-3/4 text-sm mx-auto">
   <nav className="mt-6 w-full bg-white border border-blue-500 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-neutral-800 dark:border-neutral-700" aria-label="Global">
     <div className="flex items-center justify-between">
@@ -56,7 +54,7 @@ const [isOpen, setIsOpen] = useState(false)
        {
         blogLinks.map(i => (
 
-          <Link className={`py-3 ps-px px-3 font-medium ${ search === i.category ? 'text-blue-600' : "text-davys_gray"}  hover:text-eerie_black-500`} href={i.href}>{i.title}</Link>
+          <Link className="py-3 ps-px px-3 font-medium text-davys_gray hover:text-eerie_black-500" href={i.href}>{i.title}</Link>
         ))
        }
        
@@ -70,7 +68,7 @@ const [isOpen, setIsOpen] = useState(false)
           {
             blogLinks.map(i => (
 
-              <Link className={`py-3 ps-px sm:px-3 font-medium text-center ${ search === i.category ? 'text-blue-600' : "text-davys_gray"}`}href={i.href}>{i.title}</Link>
+              <Link className="py-3 ps-px sm:px-3 font-medium text-center text-davys_gray" href={i.href}>{i.title}</Link>
             ))
           }
     
@@ -79,7 +77,7 @@ const [isOpen, setIsOpen] = useState(false)
     </div>
   </nav>
 </header>
-</Suspense>
+
 
   )
 }

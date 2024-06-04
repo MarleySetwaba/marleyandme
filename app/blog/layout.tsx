@@ -15,7 +15,6 @@ export default function BlogLayout({
 }>) {
   return (
     <>
-{/* <BlogNav/> */}
 {children}
     </>
   );

@@ -1,36 +1,90 @@
 "use client"
-import React, { Suspense } from 'react'
+import React, { Suspense, useState } from 'react'
 import BlogCard from './BlogCard'
 import { useSearchParams } from 'next/navigation'
 import { Metadata } from '@/app/blog/utils'
+import { Transition } from '@headlessui/react'
+import { blogLinks } from '@/lib/constants'
+import Link from 'next/link'
 
-export type BlogArticles = {
+export type BlogArticle = {
     metadata: Metadata;
     slug: string;
     content: string;
 }
 
-const BlogList = ({articles}: {articles: BlogArticles[]}) => {
+const BlogList = ({articles}: {articles: BlogArticle[]}) => {
+  const [isOpen, setIsOpen] = useState(false)
+const [posts, setPosts] = useState(articles) 
 
-    const search = useSearchParams().get('category')
-    const filteredArticles = articles.filter(i => i.metadata.category === search)
-
+const handleClick = (category: string) => {
+  if(category === 'all'){
+    setPosts(articles)
+  }
+  else {
+  const filteredPosts = articles.filter(i => i.metadata.category === category)
+  setPosts(filteredPosts)
+}
+}
 
   return (
+    <>
+    <header className="flex flex-wrap md:justify-start md:flex-nowrap z-50 lg:w-1/2 w-3/4 text-sm mx-auto">
+  <nav className="mt-6 w-full bg-white border border-blue-500 rounded-[36px] mx-2 py-3 px-4 md:flex md:items-center md:justify-between md:py-0 md:px-6 lg:px-8 xl:mx-auto dark:bg-neutral-800 dark:border-neutral-700" aria-label="Global">
+    <div className="flex items-center justify-between">
+    <div className='flex flex-row justify-center'>
+      <h1 className="text-xl font-semibold text-black ">Marley </h1>
+      <Link className='text-xl font-semibold  text-blue-600 hover:text-eerie_black-500' href='#'>&lt;&#47;&amp;Blog.&gt;</Link>
+      </div>
+      <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="size-8 flex justify-center items-center text-sm font-semibold rounded-full border border-gray-200 text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:border-neutral-700 dark:hover:bg-neutral-700">
+            <svg className="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+          <svg className="hidden flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+      </div>
+
+
+    </div>
+    <div className="hidden overflow-hidden transition-all duration-300 basis-full grow md:block">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-end py-2 md:py-0 md:ps-7">
+       {
+        blogLinks.map(i => (
+
+          <button className="py-3 ps-px px-3 font-medium text-davys_gray hover:text-eerie_black-500" onClick={() => handleClick(i.category)} >{i.title}</button>
+        ))
+       }
+       
+       
+      </div>
+    </div>
+
+    <div className='md:hidden'>
+        <Transition show={isOpen}>
+        <div className="flex flex-col py-2 md:py-0 md:ps-7">
+          {
+            blogLinks.map(i => (
+
+              <Link className="py-3 ps-px sm:px-3 font-medium text-center text-davys_gray" href={i.href}>{i.title}</Link>
+            ))
+          }
+    
+      </div>
+        </Transition>
+    </div>
+  </nav>
+</header>
     <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
     <div className="grid lg:grid-cols-2 gap-6">
-    
-      {
-       search ? filteredArticles.map(i => (
-        <Suspense>
-          < BlogCard key={i.slug} metadata={i.metadata} slug={i.slug}/>
-          </Suspense>
-        )) : articles.map(i => (
-            < BlogCard key={i.slug} metadata={i.metadata} slug={i.slug}/>
-        ))
-      }
+
+    {
+    posts.map(i => (
+        <BlogCard metadata={i.metadata} slug={i.slug}/>
+      ))
+    }
+ 
   </div>
   </div>
+  </>
   )
 }
 

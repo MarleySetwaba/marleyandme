@@ -1,16 +1,12 @@
-import { BlogArticle } from "@/lib/constants";
 import Image from "next/image";
 import React from "react";
 import Tags from "../Tags";
 import Link from "next/link";
-import { BlogArticles } from "./BlogList";
 import { Metadata } from "@/app/blog/utils";
+import { BlogArticle } from "./BlogList";
 
 
-type BlogCardProps = {
-  metadata: Metadata;
-  slug: string
-}
+type BlogCardProps = Omit<BlogArticle, 'content'>
 
 const BlogCard = ({ metadata, slug }: BlogCardProps ) => {
   return (
