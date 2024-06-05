@@ -79,11 +79,7 @@ export const offerings: OfferingsType[] = [
     }
   ]
 
-  export const tech_stack = [
-    {
-      img: '/zoho.png'
-    }
-  ]
+export const profile_img = 'https://images.unsplash.com/photo-1497493292307-31c376b6e479?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' 
 
   export const blogLinks = [
     {

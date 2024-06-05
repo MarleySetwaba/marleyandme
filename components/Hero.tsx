@@ -38,7 +38,7 @@ const Hero = () => {
     </div>
 
     <div className="lg:col-span-4 mt-10 lg:mt-0">
-      <Image className="w-full rounded-xl" width={500} height={500} src="/16.jpg" alt="Hero Image"/>
+      <Image className="w-full rounded-xl" width={500} height={500} src='https://images.unsplash.com/photo-1497493292307-31c376b6e479?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt="Hero Image"/>
     </div>
   </div>
 </div>

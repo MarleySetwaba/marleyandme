@@ -63,14 +63,14 @@ I take projects from whatever stage they are in, recommend the best solutions wi
             <div className="grid lg:grid-cols-2 gap-3">
               <div className="grid grid-cols-2 lg:grid-cols-1 gap-3">
                 <figure className="relative w-full h-60">
-                  <Image width={500} height={500} className="size-full absolute top-0 start-0 object-cover rounded-xl" src="https://images.unsplash.com/photo-1670272505340-d906d8d77d03?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description"/>
+                <Image width={500} height={500} className="size-full absolute top-0 start-0 object-cover rounded-xl" src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image Description"/>
                 </figure>
                 <figure className="relative w-full h-60">
-                  <Image width={500} height={500} className="size-full absolute top-0 start-0 object-cover rounded-xl" src="https://images.unsplash.com/photo-1671726203638-83742a2721a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description"/>
+                  <Image width={500} height={500} className="size-full absolute top-0 start-0 object-cover rounded-xl" src="https://images.unsplash.com/photo-1529797233791-cb08843aeac2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image Description"/>
                 </figure>
               </div>
               <figure className="relative w-full h-72 sm:h-96 lg:h-full">
-                <Image width={500} height={500} className="size-full absolute top-0 start-0 object-cover rounded-xl" src="https://images.unsplash.com/photo-1671726203394-491c8b574a0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80" alt="Image Description"/>
+                  <Image width={500} height={500} className="size-full absolute top-0 start-0 object-cover rounded-xl" src="https://images.unsplash.com/photo-1484417894907-623942c8ee29?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image Description"/>
               </figure>
             </div>
 

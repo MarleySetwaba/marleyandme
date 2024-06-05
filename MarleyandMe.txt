@@ -3,7 +3,7 @@ TODO
 ==========Home===================
 1. Add Favicon ---- DONE
 2. Add Link To 'Lets Connect' --- Done
-3. Plan for Custom Sidebar Component
+3. Plan for Custom Sidebar Component ---Done
 4. Add Social Links At Footer & Get LinkedIn Icon ---- Done
 5. Style Mobile Nav Menu and Add Links --- Done
 

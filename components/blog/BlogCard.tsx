@@ -4,6 +4,7 @@ import Tags from "../Tags";
 import Link from "next/link";
 import { Metadata } from "@/app/blog/utils";
 import { BlogArticle } from "./BlogList";
+import { profile_img } from "@/lib/constants";
 
 
 type BlogCardProps = Omit<BlogArticle, 'content'>
@@ -29,7 +30,7 @@ const BlogCard = ({ metadata, slug }: BlogCardProps ) => {
                 width={500}
                 height={500}
                 className="size-[46px] border-2 border-white rounded-full"
-                src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+                src={profile_img}
                 alt="Image Description"
               />
             </div>
