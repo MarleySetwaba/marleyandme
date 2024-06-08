@@ -23,6 +23,10 @@ export const navLinks = [
         title: 'Contact',
         url: '/contact'
     },
+    {
+      title: 'Chat',
+      url: '/chat'
+    }
 ]
 
 type OfferingsType = {

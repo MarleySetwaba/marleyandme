@@ -26,11 +26,11 @@ const initialMessage: Message[] = [
     <div className="text-center my-4">
     <div className='flex flex-row justify-center'>
       <h1 className="text-4xl font-bold text-black md:text-4xl lg:text-4xl">Marley </h1>
-      <h1 className='text-4xl font-bold md:text-4xl lg:text-4xl text-blue-600 hover:text-lime-300'>&lt;&#47;&amp;Me.&gt;</h1>
+      <h1 className='text-4xl font-bold md:text-4xl lg:text-4xl text-blue-600 hover:text-lime-300'>&lt;&#47;&amp;AI.&gt;</h1>
       </div>
 
       <p className="mt-3 text-davys_gray">
-        Your AI-powered chatbot for Marley's Portfolio.
+        Your AI-powered chatbot for business analysis and code.
       </p>
     </div>
     <div className="flex flex-col w-full mx-auto">
