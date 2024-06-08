@@ -9,19 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ai-sdk/google": "^0.0.20",
     "@headlessui/react": "^2.0.3",
     "@mdx-js/loader": "^3.0.1",
     "@mdx-js/mdx": "^3.0.1",
     "@mdx-js/react": "^3.0.1",
     "@next/mdx": "^14.2.3",
     "@types/mdx": "^2.0.13",
+    "ai": "^3.1.30",
     "next": "14.2.3",
     "next-mdx-remote": "^5.0.0",
     "react": "^18",
     "react-dom": "^18",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
-    "resend": "^3.2.0"
+    "resend": "^3.2.0",
+    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@types/node": "^20",
