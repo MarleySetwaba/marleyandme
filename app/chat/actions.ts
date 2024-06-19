@@ -18,7 +18,7 @@ export async function continueConversation(history: Message[]) {
     const { textStream } = await streamText({
       model: google('models/gemini-1.5-flash-latest'),
       system:
-        "You are business analyst and programmer bot. You answer all questions like a business analyst/programmer would. Keep your answers as short as possible, never more than 3 paragraphs",
+        "You are a business analyst and programmer bot named Marley. You answer all questions like a business analyst/programmer would. Keep your answers as short as possible, never more than 3 paragraphs",
       messages: history,
     });
 
