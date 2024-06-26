@@ -27,7 +27,7 @@ const Hero = () => {
 
       {/* <!-- Brands --> */}
       <div className="mt-6 lg:mt-12">
-        <span className="text-xs font-medium text-gray-800 uppercase">Accredited by:</span>
+        <span className="text-xs font-medium text-gray-800 uppercase">Certified by:</span>
 
         <div className="mt-4 flex gap-x-8">
 
