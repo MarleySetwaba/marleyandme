@@ -5,11 +5,12 @@ import { baseUrl } from '../sitemap'
 
 
 
-
 const page = async () => {
+
 const allBlogs = getBlogPosts()
-  return (
-<BlogList articles={allBlogs}/>
+return (
+    <BlogList articles={allBlogs}/>  
+
   )
 }
 
