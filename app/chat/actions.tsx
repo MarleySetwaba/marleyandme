@@ -62,10 +62,23 @@ const result = await streamUI({
 
 }
 
+
+const initialState: ServerMessage[] = [{
+  role: 'assistant',
+  content: 'Hi There'
+}]
+
+const initialClient: ClientMessage[] = [{
+  id: generateId(),
+  role: 'assistant',
+  display: <BotMessage chat="Hey there, I'm Marleys' AI Bot, your data-driven sidekick. I'm here to help you analyze, code, and conquer your business challenges. Ready to dive in?"/>
+}]
+
 export const AI = createAI<ServerMessage[], ClientMessage[]>({
   actions: {
     continueConversation,
   },
   initialAIState: [],
-  initialUIState: [],
+  initialUIState: initialClient,
+
 });

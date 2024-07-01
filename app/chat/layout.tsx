@@ -1,4 +1,4 @@
-import { AI } from "./actions";
+import { AI, ServerMessage } from "./actions";
 
 
 
@@ -7,8 +7,12 @@ export default function AILayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+      
   return (
-<AI>
+
+
+<AI >
     {children}
 </AI>
   );
