@@ -1,57 +1,71 @@
-'use server';
-
-import { generateText, streamText, tool } from 'ai';
-import { google } from '@ai-sdk/google';
-import { createStreamableUI, createStreamableValue } from 'ai/rsc';
-
-import { z } from 'zod';
-import React, { ReactNode } from 'react';
+"use server"
+import { createAI, getMutableAIState, streamUI } from "ai/rsc";
+import { google } from "@ai-sdk/google"
+import { generateId } from "ai";
+import { ReactNode } from "react";
+import { date, z } from "zod";
 import Schedule from "@/components/Schedule";
-export interface Message {
-  role: 'user' | 'assistant';
-  content: string;
-  display?: ReactNode;
+import BotMessage from "@/components/AI/BotMessage";
 
+export interface ServerMessage {
+  role: 'user' | 'assistant';
+  content: string
 }
 
-export async function continueConversation(history: Message[]) {
+export interface ClientMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  display: ReactNode;
+}
 
-  const stream = createStreamableUI();
+export async function continueConversation(input: string): Promise<ClientMessage>{
 
+const history = getMutableAIState();
 
-    const { text, toolResults } = await generateText({
-      model: google('models/gemini-1.5-flash-latest'),
-      system:
-        "You are a business analyst and programmer bot named Marley. You answer all questions like a business analyst/programmer would. Keep your answers as short as possible, never more than 3 paragraphs.",
-      messages: history,
-      tools: {
-        showSchedule: tool({
-          description: "Get my schedule for a specfic day in the format 'YYYY-MM-DD'",
-          parameters: z.object({
-            day: z.string().describe('The day in YYYY-MM-DD')
-          }),
-          execute: async ({ day }) => {
-            const dateFormat = z.string().date()
-            const todayFormat = dateFormat.parse(day)
-            stream.done(<Schedule start_date={todayFormat}/>)
-            return `Heres Marleys'Schedule for ${day}`
+const result = await streamUI({
+  model: google('models/gemini-1.5-flash-latest'),
+  system: "You are a business analysis and programming bot. You answer all user questions like a business analysis and programmer",
+  messages: [...history.get(), {role: 'user', content: input}],
+  text: ({ content, done}) => {
+    if(done){
+      history.done((messages: ServerMessage[]) => [
+        ...messages, {role: 'assistant', content}
+      ])
+    }
+    return <BotMessage chat={content}/>
+  },
+  tools: {
+    showSchedule: {
+      description: 'Display the schedule in the UI with dates that match the users query',
+      parameters: z.object({
+        date: z.string().describe('The date the user wants to check the schedule for. example format "2024-06-29"')
+      }),
+      generate: async ({ date }) => {
+        history.done((messages: ServerMessage[]) => [
+          ...messages,
+          {
+            role: 'assistant',
+            content: `Showing Marleys Schedule for ${date} `
           }
-        })
+        ])
+        return <Schedule start_date={date}/>
       }
-    });
-
-
+    }
+  }
+})
 
   return {
-    messages: [
-      ...history,
-      {
-        role: 'assistant' as const,
-        content:
-          text || toolResults.map(toolResult => toolResult.result).join(),
-        display: stream.value,
-      },
-    ],
-  };
+    id: generateId(),
+    role: 'assistant',
+    display: result.value
+  }
 
 }
+
+export const AI = createAI<ServerMessage[], ClientMessage[]>({
+  actions: {
+    continueConversation,
+  },
+  initialAIState: [],
+  initialUIState: [],
+});

@@ -1,1 +1,133 @@
-# Any thing
+'use server';
+
+import { generateId, generateText, streamText, tool } from 'ai';
+import { google } from '@ai-sdk/google';
+import { createAI, createStreamableUI, createStreamableValue, getMutableAIState } from 'ai/rsc';
+
+import { z } from 'zod';
+import React, { ReactNode } from 'react';
+import Schedule from "@/components/Schedule";
+import BotMessage from '@/components/AI/BotMessage';
+
+export interface Message {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+  display?: ReactNode;
+}
+
+
+export type AIState = {
+  id: string
+  interactions?: string[]
+  messages: Message[]
+}
+
+export type UIState = {
+  id: string
+  display: React.ReactNode
+}[]
+
+
+export async function continueConversation(input: string) {
+
+  const uiStream = createStreamableUI();
+  const textStream = createStreamableValue('')
+  const messageStream = createStreamableUI();
+  const aiState = getMutableAIState()
+
+
+  ;(async () => {
+    try {
+      const result = await streamText({
+        model: google('models/gemini-1.5-flash-latest'),
+        system:
+          "You are a business analyst and programmer bot named Marley. You answer all questions like a business analyst/programmer would. Keep your answers as short as possible, never more than 3 paragraphs.",
+        messages: [...aiState.get(), {role: 'user', content: input}],
+        tools: {
+        showSchedule: {
+          description: 'Show the schuedule for the date that matches the users query',
+          parameters: z.object({
+            date: z.string().describe('The date of the users query, example format: "2024-06-24"')
+          })
+        }
+        }
+      });
+
+      let textContent = ''
+
+      for await(const delta of result.fullStream) {
+
+          const { type } = delta
+
+          if(type === 'text-delta'){
+            const { textDelta } = delta
+            
+            textContent += textDelta
+            messageStream.update(<BotMessage chat={textContent}/>)
+          } else if(type === 'tool-call') {
+              const { toolName, args } = delta
+  
+              if(toolName === 'showSchedule'){
+                const { date } = args
+  
+                uiStream.update(<Schedule start_date={date}/>)
+                aiState.done({
+                  ...aiState.get(),
+                  interactions: [],
+                  messages: [
+                    ...aiState.get().messages,
+                    {
+                      role: 'assistant',
+                      content: `Here is Marleys Schedule for ${date}`,
+                      display: {
+                        name: 'showSchedule',
+                        props: {
+                          date
+                        }
+                      }
+                    }
+                  ]
+    
+                })
+  
+              }
+  
+            
+        }
+  
+        uiStream.done()
+        textStream.done()
+        messageStream.done()
+        }
+      }
+    catch (error) {
+      const error_message = new Error('Something Went Wrong With The Server')
+
+      uiStream.error(error_message)
+      textStream.error(error_message)
+      aiState.done({})
+    }
+  })()
+
+
+
+
+
+
+  return {
+id: generateId(),
+role: 'assistant',
+display: uiStream.value 
+  };
+
+}
+
+
+export const AI = createAI<AIState, UIState>({
+  actions: {
+    continueConversation,
+  },
+  initialAIState: {id: generateId(), interactions: [], messages: []},
+  initialUIState: [],
+});
