@@ -36,12 +36,28 @@ const schedule: Schedule[] = [
         start_time: '09H00',
         end_time: '17H00'
     },
+    {
+        id: 5,
+        start_date:'2024-07-01',
+        event_name: 'Work',
+        description: "Hit The Grind",
+        start_time: '09H00',
+        end_time: '17H00'
+    },
+    {
+        id: 6,
+        start_date:'2024-07-01',
+        event_name: 'IIBA Womens Month Team Meeting',
+        description: "Inital Meeting For IIBA Volunteers Meeting",
+        start_time: '17H30',
+        end_time: '18H30'
+    },
 ]
 const Schedule = ({ start_date, end_date }: { start_date: string, end_date?: Date}) => {
 
     const scheduleResults = schedule.filter(i => i.start_date === start_date)
   return (
-<div className="px-2 mx-auto border border-none max-w-3xl">
+<div className="px-2 mx-auto border border-none w-full">
 <div className="flex flex-col">
   <div className="-m-1.5 overflow-x-auto">
     <div className="p-1.5 min-w-full inline-block align-middle">
@@ -58,7 +74,7 @@ const Schedule = ({ start_date, end_date }: { start_date: string, end_date?: Dat
         </div>
 {
  scheduleResults.length > 0 ? (
-        <table className="min-w-full ">
+        <table className="w-full">
           <thead className="bg-blue-500">
             <tr>
               <th scope="col" className="pe-6 py-3 ">

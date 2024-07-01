@@ -24,7 +24,7 @@ const history = getMutableAIState();
 
 const result = await streamUI({
   model: google('models/gemini-1.5-flash-latest'),
-  system: "You are a business analysis and programming bot. You answer all user questions like a business analysis and programmer",
+  system: "You are a business analysis and programming bot named Marley. You answer all user questions like a business analysis and programmer. Keep your answers as short as possible, and no more than 3 paragraphs",
   messages: [...history.get(), {role: 'user', content: input}],
   text: ({ content, done}) => {
     if(done){

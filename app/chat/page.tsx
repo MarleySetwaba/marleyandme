@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ClientMessage } from './actions';
 import { useActions, useUIState } from 'ai/rsc';
 import { generateId } from 'ai';
+import UserMessage from '@/components/AI/UserMessage';
 
 // Force the page to be dynamic and allow streaming responses up to 30 seconds
 export const dynamic = 'force-dynamic';
@@ -28,7 +29,7 @@ export default function Chat() {
 
   return (
     <div className="max-w-4xl mx-auto flex flex-col h-[80vh] relative" >
-  <div className="px-4 py-4 lg:px-8 lg:py-8 h-[75%] overflow-y-auto">
+  <div className="px-4 py-4 lg:px-8 lg:py-8 h-[75%] overflow-y-auto" ref={messageListRef}>
     <div className="text-center my-4">
     <div className='flex flex-row justify-center'>
       <h1 className="text-4xl font-bold text-black md:text-4xl lg:text-4xl">Marley </h1>
@@ -40,11 +41,11 @@ export default function Chat() {
       </p>
     </div>
     <div className="flex flex-col max-w-4xl mx-auto">
-          <div className="mt-16 space-y-5" ref={messageListRef}>
+          <div className="mt-16 space-y-5">
 {
   conversation.map((message: ClientMessage) => (
-   <div>
-  {message.display}
+   <div key={message.id}>
+  {message.role === 'user' ? (<UserMessage message={message.display}/>) : (<>{message.display}</>)}
    </div>
   ))
 }
