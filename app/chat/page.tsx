@@ -76,7 +76,9 @@ setConversation((currentConversation: ClientMessage[]) => [
   {id: generateId(), role: 'user', display: input}
 ]);
 
+
 const message = await continueConversation(input);
+setInput('')
 
 setConversation((currentConversation: ClientMessage[]) => [
   ...currentConversation,

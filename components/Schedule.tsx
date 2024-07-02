@@ -1,58 +1,7 @@
+import { schedule } from '@/lib/constants'
 import React from 'react'
 
 
-type Schedule = {
-    id: number;
-    start_date: string
-    end_date?: string
-    event_name: string
-    description: string
-    start_time?: string
-    end_time?: string
-    
-}
-const schedule: Schedule[] = [
-    {
-        id: 1,
-        start_date: '2024-06-27',
-        event_name: 'Work',
-        description: "Time Given For A Salary.",
-        start_time: '09H00',
-        end_time: '17H00'
-    },
-    {
-        id: 2,
-        start_date:'2024-06-27',
-        event_name: 'Coding',
-        description: "Fixing Marley&Me AI Scheduler",
-        start_time: '20H00',
-        end_time: '00H00'
-    },
-    {
-        id: 3,
-        start_date:'2024-06-28',
-        event_name: 'Work',
-        description: "Hit The Grind, Atleast Its Friday",
-        start_time: '09H00',
-        end_time: '17H00'
-    },
-    {
-        id: 5,
-        start_date:'2024-07-01',
-        event_name: 'Work',
-        description: "Hit The Grind",
-        start_time: '09H00',
-        end_time: '17H00'
-    },
-    {
-        id: 6,
-        start_date:'2024-07-01',
-        event_name: 'IIBA Womens Month Team Meeting',
-        description: "Inital Meeting For IIBA Volunteers Meeting",
-        start_time: '17H30',
-        end_time: '18H30'
-    },
-]
 const Schedule = ({ start_date, end_date }: { start_date: string, end_date?: Date}) => {
 
     const scheduleResults = schedule.filter(i => i.start_date === start_date)

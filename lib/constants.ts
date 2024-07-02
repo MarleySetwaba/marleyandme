@@ -128,4 +128,135 @@ export const profile_img = 'https://images.unsplash.com/photo-1497493292307-31c3
     paragraphs: string[];
   }
 
-
+ export  type Schedule = {
+    id: number;
+    start_date: string
+    end_date?: string
+    event_name: string
+    description: string
+    start_time?: string
+    end_time?: string
+    
+}
+  export const schedule: Schedule[] = [
+    {
+        id: 1,
+        start_date: '2024-06-27',
+        event_name: 'Work',
+        description: "Time Given For A Salary.",
+        start_time: '09H00',
+        end_time: '17H00'
+    },
+    {
+        id: 2,
+        start_date:'2024-06-27',
+        event_name: 'Coding',
+        description: "Fixing Marley&Me AI Scheduler",
+        start_time: '20H00',
+        end_time: '00H00'
+    },
+    {
+        id: 3,
+        start_date:'2024-06-28',
+        event_name: 'Work',
+        description: "Hit The Grind, Atleast Its Friday",
+        start_time: '09H00',
+        end_time: '17H00'
+    },
+    {
+        id: 4,
+        start_date:'2024-07-01',
+        event_name: 'Work',
+        description: "Hit The Grind",
+        start_time: '09H00',
+        end_time: '17H00'
+    },
+    {
+        id: 10,
+        start_date:'2024-07-01',
+        event_name: 'IIBA Womens Month Team Meeting',
+        description: "Inital Meeting For IIBA Volunteers Meeting",
+        start_time: '17H30',
+        end_time: '18H30'
+    },
+    {
+      "id": 5,
+      "start_date": "2024-07-01",
+      "event_name": "Work",
+      "description": "Adulting - Achieve moderate levels of productivity",
+      "start_time": "08:00",
+      "end_time": "17:00"
+    },
+    {
+      "id": 6,
+      "start_date": "2024-07-02",
+      "event_name": "Work",
+      "description": "Emails, Meetings, and the neverending quest for coffee",
+      "start_time": "08:00",
+      "end_time": "17:00"
+    },
+    {
+      "id": 7,
+      "start_date": "2024-07-03",
+      "event_name": "Work",
+      "description": "Spreadsheets that talk back and existential dread (optional)",
+      "start_time": "08:00",
+      "end_time": "17:00"
+    },
+    {
+      "id": 8,
+      "start_date": "2024-07-04",
+      "event_name": "Work",
+      "description": "Pretend to be busy while strategically planning the weekend",
+      "start_time": "08:00",
+      "end_time": "17:00"
+    },
+    {
+      "id": 9,
+      "start_date": "2024-07-05",
+      "event_name": "Work",
+      "description": "Casually refresh Zoho every 2 minutes, hoping for a miracle (it won't happen)",
+      "start_time": "08:00",
+      "end_time": "17:00"
+    },
+    {
+      "id": 11,  
+      "start_date": "2024-07-08", 
+      "event_name": "IIBA Volunteer Team Meeting", 
+      "description": "Discuss Business Analysis Women's Month Campaign", 
+      "start_time": "18:30", 
+      "end_time": "19:30"
+    },
+    {
+      "id": 12,  
+      "start_date": "2024-07-02", 
+      "event_name": "Coding", 
+      "description": "MototraceHub", 
+      "start_time": "20:00", 
+      "end_time": "23:30"
+    },
+    {
+      "id": 13,  
+      "start_date": "2024-07-03", 
+      "event_name": "Marley&Me", 
+      "description": "Write New Blogs And Improve AI", 
+      "start_time": "20:00", 
+      "end_time": "23:30"
+    },
+    {
+      "id": 14,  
+      "start_date": "2024-07-04", 
+      "event_name": "Coding", 
+      "description": "MototraceHub",
+      "start_time": "20:00", 
+      "end_time": "23:30"
+    },
+    {
+      "id": 15,  
+      "start_date": "2024-07-05", 
+      "event_name": "Marley&Me", 
+      "description": "Write New Blogs And Improve AI", 
+      "start_time": "20:00", 
+      "end_time": "23:30"
+    },
+]

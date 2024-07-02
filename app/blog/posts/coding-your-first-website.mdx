@@ -1,0 +1,125 @@
+---
+title: "Building Your First Website with HTML & CSS"
+publishedAt: "2024-07-02"
+summary: "Beginner tutorial for those new to web development on how to build a website locally."
+category: "dev"
+image: "https://images.unsplash.com/photo-1528901166007-3784c7dd3653?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+---
+
+# Build Your First Website: Diving into HTML, CSS, and Visual Studio Code
+
+Welcome to the exciting world of web development! Today, we'll embark on a journey to create your very first website using three key tools: HTML, CSS, and Visual Studio Code. Don't worry, even if these terms sound technical, we'll break them down step-by-step for beginners. 
+
+**What You'll Need:**
+
+**1. A computer**
+
+**2. An internet connection (to view your website in a browser)**
+
+**3. Visual Studio Code (VS Code):** 
+This is a free code editor that makes writing code easy and fun. Download it from the official [website](https://code.visualstudio.com/)
+## The Building Blocks: HTML and CSS
+
+Imagine your website as a house.  
+
+**HTML (HyperText Markup Language):** 
+This is the foundation, the blueprint of your website. It defines the structure of your content, like headings, paragraphs, images, and links.  Think of it as the framework for your rooms and furniture.
+
+**CSS (Cascading Style Sheets):** 
+This is the paint and décor!  CSS lets you style your website, control the fonts, colors, layouts, and overall look and feel. It's how you make your website visually appealing and user-friendly. 
+
+## Step 1: Setting Up Your Development Environment
+
+1. Download and install VS Code. You can check out their installation guide [here](https://code.visualstudio.com/docs/setup/setup-overview)
+
+2. Open VS Code. It will be a blank canvas for you to write your website's code.
+
+
+## Step 2: Building the Foundation with HTML
+
+**Create a New File:** 
+In VS Code, go to "File" > "New File" and name it "index.html" (this is a common naming convention for the main page of a website).
+
+**The Basic Structure:** 
+Type the following code into your "index.html" file:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>My First Website</title>
+</head>
+<body>
+  <h1>Welcome to My Website!</h1>
+  <p>This is my first attempt at building a website. Let's make it awesome!</p>
+</body>
+</html>
+```
+
+**Explanation:**
+
+`<!DOCTYPE html>`: This line tells the browser you're using HTML.
+
+`<html>`: This is the root element of your webpage. Everything goes inside these tags.
+
+`<head>`: This section contains information about your webpage, like the title displayed on the browser tab.
+
+`<title>`: This defines the title of your webpage.
+
+`<body>`: This is where all the content that users see will be placed. 
+
+`<h1>`: This creates a heading with the largest size. You can use `<h2>` for subheadings and so on.
+
+`<p>`: This creates a paragraph for your text content.
+
+## Step 3: Adding Style with CSS
+
+1. **Create a New File:** In VS Code, create another file and name it "style.css".
+
+2. **Link the CSS to your HTML:**  Inside your "index.html" file, add this line inside the `<head>` section:
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+This line tells your HTML to use the styles defined in the "style.css" file.
+
+**Style Your Website:**  Inside your "style.css" file, add the following code:
+
+```css
+body {
+  font-family: Arial, sans-serif;  /* Set the font */
+  background-color: #f2f2f2;  /* Set the background color */
+}
+
+h1 {
+  color: blue;  /* Change the heading color */
+  text-align: center;  /* Center align the heading */
+}
+
+p {
+  color: #333;  /* Change the paragraph text color */
+  line-height: 1.5;  /* Adjust the line spacing */
+}
+```
+
+**Explanation:**
+
+In CSS, we use selectors (like `body`, `h1`, and `p`) to target specific parts of our HTML code. 
+
+Curly braces `{}` contain the properties (like `font-family` and `color`) that define the styles.
+
+This code sets the font, background color, text color, alignment, and line spacing for different elements.
+
+## Step 4: See Your Creation Come to Life!
+
+1. **Save your files:** Make sure you save both "index.html" and "style.css".
+
+2. **Open your website in a browser:** Drag and drop "index.html" from VS Code into your web browser window.
+
+Voila! You've built your first website.
+
+# Side Note
+
+If you'd like more tutorials on this blog, or if you just have questions, please email me and tell me what you'd like a blog tutorial on.

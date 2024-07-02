@@ -5,6 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import Markdown from 'react-markdown'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { coldarkDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const BotMessage = ({chat}: {chat: string | StreamableValue<string>}) => {
     const text = useStreamableText(chat)
@@ -37,6 +39,11 @@ const BotMessage = ({chat}: {chat: string | StreamableValue<string>}) => {
             li(props){
               return(
                 <li className='text-sm text-davys_gray'>{props.children}</li>
+              )
+            },
+            code(props){
+              return (
+                <SyntaxHighlighter language="javascript" style={coldarkDark}>{props.children}</SyntaxHighlighter>
               )
             }
 
