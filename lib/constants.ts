@@ -258,5 +258,12 @@ export const profile_img = 'https://images.unsplash.com/photo-1497493292307-31c3
       "description": "Write New Blogs And Improve AI", 
       "start_time": "20:00", 
       "end_time": "23:30"
-    },
+    },{
+      "id": 16,  
+      "start_date": "2024-08-14", 
+      "event_name": "Tutoring", 
+      "description": "Tutoring", 
+      "start_time": "20:00", 
+      "end_time": "23:30"
+    }
 ]

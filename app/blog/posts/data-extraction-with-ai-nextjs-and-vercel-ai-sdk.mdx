@@ -1,0 +1,123 @@
+---
+title: "Data Extraction with AI: A Next.js and Vercel AI SDK Example"
+publishedAt: "2024-08-20"
+summary: "A brief look into how Business Analysts can leverage the power of AI for private data analysis"
+category: "business_analysis"
+image: "https://images.unsplash.com/photo-1675271591211-126ad94e495d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+---
+
+# Data Extraction with AI: A Next.js and Vercel AI SDK Example
+
+Traditionally, business analysts have spent countless hours manually extracting data from various sources. This process is not only time-consuming but also prone to errors. AI-driven automation can significantly streamline this process, allowing analysts to focus on higher-value tasks like data analysis and interpretation.
+
+## The Power of Automation
+
+Imagine a business analyst tasked with gathering sales data from multiple sources: a CRM system, an e-commerce platform, and a marketing automation tool. Each system has its own API endpoints, requiring different authentication methods and data formats. Manually collecting, cleaning, and consolidating this data would be a daunting task.
+
+## Leveraging Next.js and Vercel AI SDK
+
+This is where Next.js and Vercel AI SDK come into play. By combining the power of these tools, we can create a robust data extraction pipeline.
+
+**1. Define Data Sources and API Endpoints:**
+* Identify the key data sources and their respective API endpoints.
+* Determine the necessary authentication mechanisms (API keys, OAuth, etc.).
+
+**2. Create a Next.js API Route:**
+* Build a Next.js API route to handle data extraction requests. 
+* Use the Vercel AI SDK to interact with the data sources.
+
+<br/>
+<br/>
+
+## Lets use an example to see this in action
+
+So, recently I had the idea to use AI to gather and manage all my contacts and customers on Zoho Inventory (an inventory management software), I wanted the AI to extract data from the Zoho Inventory platform just by using natural language.
+
+Luckily for me, Zoho Inventory has API endpoints for all the data within my organization, and an easy enough method for authenticating incoming requests. Using Vercels AI SDK and NextJS, Lets look at the code that can make this happen.
+
+```javascript
+'use server';
+
+import { generateText } from 'ai';
+import { google } from '@ai-sdk/google';
+import { z } from 'zod';
+import { list_all_contacts } from '@/lib/ZohoApi/contacts';
+
+export interface Message {
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+export async function continueConversation(history: Message[]) {
+  'use server';
+
+  const { text, toolResults } = await generateText({
+    model: google('models/gemini-1.5-flash-latest'),
+  system: "You are a friendly assistant bot. You help retrieve and explain data from the Zoho Inventory API. You also help the user make decisions on the retrieved data",
+    messages: history,
+    tools: {
+      list_all_contacts: {
+        description: "List all contacts In Zoho Inventory",
+        parameters: z.object({
+          contacts: z.string().describe(""),
+        }),
+        execute: async () => {
+          //Call API Endpoint
+          const data = await list_all_contacts();
+          
+          return JSON.stringify(data);
+        },
+      },
+    },
+  });
+
+  return {
+    messages: [
+      ...history,
+      {
+        role: 'assistant' as const,
+        content:
+          text || toolResults.map(toolResult => toolResult.result).join('\n'),
+      },
+    ],
+  };
+}
+```
+
+
+In short, this code defines a function for continuing a conversation with a user. The function utilizes Google Geminis 1.5 Flash AI model to generate responses and integrates a custom tool to interact with the Zoho Inventory API. The "use server" directive ensures that the AI model and potentially sensitive API calls are executed on the server-side, which ensures some level of security.
+
+The response generated is a JSON string that contains all the response data from the API. Interestingly enough (and what I love about Vercels AI SDK), is I can also render a React UI Component and pass the response data to the component and return it as an AI response.
+
+<br/>
+<br/>
+
+
+## Other ideas to explore.
+**3. Data Cleaning and Transformation:**
+* Employ AI techniques to clean and preprocess the extracted data.
+* Handle missing values, outliers, and inconsistencies.
+* Transform data into a suitable format for analysis.
+
+**4. Data Enrichment (Optional):**
+* Utilize external data sources or AI models to enhance the data.
+* For example, enrich customer data with demographic information.
+
+**5. Data Storage:**
+* Store the processed data in a database or data warehouse for further analysis.
+
+<br/>
+<br/>
+
+
+## Benefits of Automation
+
+* **Time Savings:** Automate repetitive tasks, freeing up analysts for strategic work.
+* **Improved Accuracy:** Reduce human error in data extraction and manipulation.
+* **Consistency:** Ensure data consistency across different sources.
+* **Scalability:** Easily handle increasing data volumes.
+* **Real-time Insights:** Enable faster decision-making with up-to-date data.
+
+By automating data extraction with AI, business analysts can focus on uncovering valuable insights and driving business growth.
+ 
+

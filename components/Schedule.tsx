@@ -2,8 +2,9 @@ import { schedule } from '@/lib/constants'
 import React from 'react'
 
 
-const Schedule = ({ start_date, end_date }: { start_date: string, end_date?: Date}) => {
+const Schedule = async ({ start_date, end_date }: { start_date: string, end_date?: Date}) => {
 
+  // const data = await fetch('http://localhost:3000/api/schedule').then(res => res.json()).then(res => console.log(res))
     const scheduleResults = schedule.filter(i => i.start_date === start_date)
   return (
 <div className="px-2 mx-auto border border-none w-full">
