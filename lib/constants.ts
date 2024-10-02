@@ -34,7 +34,7 @@ export const navLinks = [
     },
     {
       title: 'Shop',
-      url: 'http://localhost:3001'
+      url: '/marley/shop'
     }
 ]
 
@@ -286,18 +286,7 @@ export const playground_projects = [
     image_url: '/marley/playground/ai-ecommerce.svg',
     url: '/andme/ai-ecommerce'
   },
-  {
-    title: 'UI Template #1',
-    description: "If you're looking to invest into digital solutions to improve your business, then I can help you get the most out of your investment.",
-    image_url: placeholder_img,
-    url: '/andme'
-  },
-  {
-    title: 'UI Template #2',
-    description: "If you're looking to invest into digital solutions to improve your business, then I can help you get the most out of your investment.",
-    image_url: placeholder_img,
-    url: '/andme'
-  },
+
 ]
 
 
