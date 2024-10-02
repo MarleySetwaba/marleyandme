@@ -1,4 +1,4 @@
-import { getBlogPosts, getBlogsByCategory } from "@/app/blog/utils";
+import { getBlogPosts, getBlogsByCategory } from "@/app/marley/blog/utils";
 import { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {

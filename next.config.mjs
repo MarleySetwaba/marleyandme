@@ -13,7 +13,13 @@ const nextConfig = withMdx({
             hostname: 'images.unsplash.com',
             port: '',
             pathname: '/**'
-    }]
+    },
+{
+    protocol: 'https',
+    hostname: 'res.cloudinary.com',
+    port: '',
+    pathname: '/**'
+}]
     },
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 });

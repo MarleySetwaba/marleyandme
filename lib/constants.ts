@@ -1,31 +1,40 @@
-import { AI, Analysis, CRM, Code, Finance, Market, TechSupport, UIDesign, eComm } from "@/components/SVG"
+import { AI, Analysis, CRM, Code, Finance, Market, TechSupport, UIDesign, eComm } from "@/components/Marley/SVG"
 import path from "path";
 import { ReactNode } from "react";
 import { promises as fs } from 'fs';
 import { remark } from "remark";
 import html from 'remark-html';
+import { baseUrl } from "@/app/sitemap";
 
 
 export const navLinks = [
     {
         title: 'Home',
-        url: '/'
+        url: '/marley'
     },
     {
         title: 'Services',
-        url: '/services'
+        url: '/marley/services'
     },
     {
         title: 'Blog',
-        url: '/blog'
+        url: '/marley/blog'
     },
     {
         title: 'Contact',
-        url: '/contact'
+        url: '/marley/contact'
     },
     {
       title: 'Chat',
-      url: '/chat'
+      url: '/marley/chat'
+    },
+    {
+      title: 'Playground',
+      url: '/marley/playground'
+    },
+    {
+      title: 'Shop',
+      url: 'http://localhost:3001'
     }
 ]
 
@@ -89,22 +98,22 @@ export const profile_img = 'https://images.unsplash.com/photo-1497493292307-31c3
     {
       title: 'All',
       category: 'all',
-      href: '/blog'
+      href: `/marley/blog`
     },
     {
       title: 'Business Analysis',
       category: 'business_analysis',
-      href: '/blog?category=business_analysis'
+      href: '/marley/blog?category=business_analysis'
     },
     {
       title: 'Dev',
       category: 'dev',
-      href: '/blog?category=dev'
+      href: '/amrley/blog?category=dev'
     },
     {
       title: 'Case Studies',
       category: 'case_studies',
-      href: '/blog?category=case_studies'
+      href: '/marley/blog?category=case_studies'
     },
   ]
 
@@ -267,3 +276,28 @@ export const profile_img = 'https://images.unsplash.com/photo-1497493292307-31c3
       "end_time": "23:30"
     }
 ]
+
+export const placeholder_img = '/vercel.svg'
+
+export const playground_projects = [
+  {
+    title: 'AI eCommerce Store',
+    description: "Welcome to Summer Street, a simple AI Clothing eCommerce Store. Chat with the AI assistant about which clothes you're looking to buy from Summer Street.",
+    image_url: '/marley/playground/ai-ecommerce.svg',
+    url: '/andme/ai-ecommerce'
+  },
+  {
+    title: 'UI Template #1',
+    description: "If you're looking to invest into digital solutions to improve your business, then I can help you get the most out of your investment.",
+    image_url: placeholder_img,
+    url: '/andme'
+  },
+  {
+    title: 'UI Template #2',
+    description: "If you're looking to invest into digital solutions to improve your business, then I can help you get the most out of your investment.",
+    image_url: placeholder_img,
+    url: '/andme'
+  },
+]
+
+

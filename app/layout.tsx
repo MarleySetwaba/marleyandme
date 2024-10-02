@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react"
 import "./globals.css";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
+import Nav from "@/components/Marley/Nav";
+import Footer from "@/components/Marley/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,9 +28,11 @@ export default function RootLayout({
 />
       </head>
       <body className={inter.className}>
-        <Nav/>
+<main className="max-w-screen-2xl">
+
         {children}
-        <Footer/>
+</main>
+
         <Analytics/>
         </body>
     </html>
