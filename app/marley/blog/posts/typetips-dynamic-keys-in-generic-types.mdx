@@ -1,0 +1,103 @@
+---
+title: 'TypeTips 1: Using Generic Types For Semi Dynamic Response Structures'
+publishedAt: '2024-11-17'
+summary: 'By understanding the combination of generic types, interface inheritance, and partial types, you can create powerful and flexible response structures in your TypeScript applications.'
+category: 'dev'
+image: 'https://images.unsplash.com/photo-1656660364352-3a504c39bde2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+---
+
+**Understanding Generics in Semi Dynamic Response Structures**
+
+
+```
+//base response
+type BaseResponse = {
+    code: number;
+    message: string;
+}
+
+//resource can be items, sales etc
+
+//Generic Response
+type GenericResourceResponse<T extends string> = BaseResponse & Partial<Record<T, any>>
+
+//items response
+const items_response: GenericResourceResponse<'items'> = {
+    code: 1,
+    message: 'success',
+    items: {
+        id: '354',
+        name: 'Earphones',
+        price: 200
+
+    }
+}
+
+//sales response
+const sales_response: GenericResourceResponse<'sales'> = {
+code: 1,
+message: 'success',
+sales: {
+    id: 1,
+    item_id: '354',
+    sales_price: 250
+}
+}
+
+//failed response for expenses
+const failed_response: GenericResourceResponse<'expenses'> = {
+    code: 0,
+    message: 'failed',
+
+}
+
+
+```
+
+**Core Concept:**
+- **Flexibility:** The primary goal is to create a versatile response structure that can accommodate various data types without compromising type safety.
+- **Generic Type `T`:** This allows us to dynamically specify the key of the additional property.
+- **`Partial<Record<T, any>>`:** This part is crucial. It ensures that the property with the key `T` is optional and can hold any value.
+
+**Breakdown:**
+
+1. **`BaseResponse`:**
+   - This is a simple interface defining a basic response structure with `code` and `message` properties.
+
+2. **`GenericResourceResponse`:**
+   - **Extends `BaseResponse`:** Inherits the `code` and `message` properties.
+   - **`Partial<Record<T, any>>`:**
+     - `Record<T, any>`: Creates an object with a single property. The property's key is `T` (the dynamic key) and its value can be anything.
+     - `Partial`: Makes the entire object optional. This means the dynamic property and its value can be absent.
+
+**Example:**
+
+```typescript
+const itemsResponse: GenericResourceResponse<'items'> = {
+  code: 200,
+  message: 'Items fetched successfully',
+  items: [
+    { id: 1, name: 'Product A' },
+    { id: 2, name: 'Product B' }
+  ]
+};
+
+const salesResponse: GenericResourceResponse<'sales'> = {
+  code: 200,
+  message: 'Sales data retrieved',
+  sales: {
+    totalSales: 10000,
+    topProduct: 'Product A'
+  }
+};
+```
+
+**Key Benefits:**
+
+- **Type Safety:** Ensures that the dynamic property exists only when specified and has the correct type.
+- **Flexibility:** Can accommodate various response structures without creating multiple specific response types.
+- **Code Reusability:** Centralizes common response properties and dynamic data handling.
+- **Improved Code Readability:** Clearer intent and easier to understand the potential structure of the response.
+
+By understanding the combination of generic types, interface inheritance, and partial types, you can create powerful and flexible response structures in your TypeScript applications.
+os, making your TypeScript code more flexible and adaptable. By using generic types and the `Partial` and `Record` types, you can create dynamic responses that can be easily extended and modified.
